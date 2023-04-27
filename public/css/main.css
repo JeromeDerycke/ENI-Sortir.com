@@ -1,0 +1,336 @@
+body {
+    background-color: #eee3d3;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+a, li {
+    list-style: none;
+}
+ul{
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+.container{
+    min-height: 100%;
+    position: relative;
+    padding: 0 0 50px 0;       /* Hauteur du pied de page */
+    margin: 0 auto;
+}
+/*     ---------NAV---------     */
+nav {
+    background-color: #ba947c;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 0px 20px;
+    align-self: center;
+}
+.flex-link{
+    display: flex;
+}
+.flex-link li{
+    align-self: center;
+    padding: 0px 20px;
+}
+/*    ---------FOOTER---------    */
+#footer {
+    bottom:0;                   /* On le colle en bas */
+    width:100%;
+    height:50px;              /* Hauteur du pied de page */
+    text-align: center;
+}
+#footer p{
+    padding: 0px 20px;
+}
+/*    ---------PAGE DE CONNEXION---------    */
+.login-form{
+    text-align: center;
+    margin-top: 2%;
+}
+label {
+    display: block;
+}
+
+input,
+textarea,
+select {
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+
+}
+.align{
+    text-align: center;
+    padding: 1.2em;
+    font-size: 28px;
+}
+.background-form{
+    background-color: #ba947c;
+    max-width: 450px;
+    margin: 10% auto 0 auto;
+    padding: 20px;
+    border-radius: 3px;
+
+}
+.login-form div{
+    display: grid;
+}
+.login-form input{
+    border-radius: 3px;
+    border: none;
+    padding: 20px;
+    font-size: 1.2rem;
+    width: 100%;
+    max-width: 75%;
+    justify-self: center;
+}
+.login-form label{
+    padding-bottom: 5px;
+}
+label .remember-me{
+    max-width: 20px;
+}
+.login-form .btn-primary{
+    background-color: #eee3d3;
+    border-color: #eee3d3;
+    color: black;
+}
+/*    ---------PAGE DE CREATION DE SORTIE---------    */
+.flex{
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+}
+.align-creation{
+    text-align: center;
+    margin: 1em;
+}
+.flex input{
+    border-radius: 3px;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    justify-self: center;
+}
+.flex select{
+     border-radius: 3px;
+     border: none;
+     padding: 10px;
+     width: 100%;
+     justify-self: center;
+}
+textarea{
+    width: 100%;
+    height: 7em;
+    border-radius: 3px;
+    border: none;
+}
+.btn-cuns{
+    display: flex;
+    justify-content: center;
+}
+.btn-cuns a{
+    padding: 12px;
+}
+
+/*    ---------PAGE D'ACCUEIL---------    */
+#form_campus{
+    width: auto;
+}
+.flex-main{
+    display: flex;
+    justify-content: flex-start;
+    gap: 8rem;
+    align-items: end;
+    margin:  1.7rem 0;
+}
+.flex-main .btn-success{
+    border: 1px solid grey;
+    color: black;
+    background-color: #d1e7dd;
+}
+.flex-main .btn-success:hover{
+    border: 1px solid grey;
+    color: black;
+    background-color: #d1e7dd;
+}
+.grid{
+    margin-top: 2em;
+    display: grid;
+    justify-content: end;
+}
+.container .btn-crea{
+    border: 1px solid grey;
+    color: black;
+    background-color: #d1e7dd;
+}
+.container .btn-crea:hover{
+    border: 1px solid grey;
+    color: black;
+    background-color: #d1e7dd;
+}
+
+/*    ---------MESSAGE SUCCESS---------    */
+.flash{
+    padding : 20px;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.flash-success {
+    background-color: darkseagreen;
+    text-align: center;
+}
+/*    ---------DETAILS SORTIE---------    */
+.margin-show{
+    margin-bottom: 15px;
+}
+.align-liste{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.align-petit{
+    text-align: center;
+    padding: 1.2em;
+    font-size: 22px;
+}
+/*    ---------SHOW PROFIl---------    */
+.flex-profil{
+    display: flex;
+    justify-content: center;
+    gap : 7%;
+    align-items: center;
+    margin-bottom: 4%;
+}
+.flex-detail{
+    display: flex;
+    margin: 15px;
+}
+.taille{
+    max-width: 300px;
+    max-height: 400px;
+}
+/*    ---------EDIT PROFIL---------    */
+.oue>form>div:nth-child(3n){
+    text-align: center;
+    margin-top: 4.9rem;
+}
+.oue>form>div:nth-child(3n)>button{
+    background: none;
+    border: none;
+}
+.oue>form>div:nth-child(2n){
+    margin-left: 52px;
+}
+.margin-top{
+    margin-top: 17px;
+    text-align: center;
+}
+.responsive{
+    display: none;
+}
+.none{
+    display: block;
+}
+.flex-res{
+    display: flex;
+    justify-content: center;
+    gap: 250px;
+}
+.align-retour{
+    text-align: center;
+    margin-top: 40px;
+}
+
+
+/*    ---------MEDIA QUERIES---------    */
+@media only screen and (max-width: 480px) {
+    .none{
+        display: none;
+    }
+    .background-form{
+        margin: 100px 25px 25px 25px;
+    }
+    .responsive{
+        display: block;
+    }
+
+    .btn-crea{
+        display: none;
+    }
+    .grid{
+        display: block;
+    }
+    .flex-main{
+        display: block;
+        margin: 15px;
+    }
+    .flex{
+        display: block;
+        margin: 15px;
+    }
+    .flex-res{
+          display: flex;
+          justify-content: center;
+          gap: 50px;
+    }
+    .title{
+        font-size: 16px;
+    }
+    .responsive .bg-body-tertiary{
+        background-color: #ba947c !important;
+    }
+    .title-sortie{
+        margin-top: 70px;
+    }
+    .flex-profil{
+        display: block;
+    }
+
+}
+@media only screen and (max-width: 768px) {
+    .none{
+        display: none;
+    }
+    .background-form{
+        margin: 100px 25px 25px 25px;
+    }
+    .responsive{
+        display: block;
+    }
+    .grid{
+        display: block;
+    }
+    .flex-main{
+        display: block;
+        margin: 15px;
+    }
+    .flex{
+        display: block;
+        margin: 15px;
+    }
+    .flex-res{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+    .title{
+        font-size: 16px;
+    }
+    .responsive .bg-body-tertiary{
+        background-color: #ba947c !important;
+    }
+    .title-sortie{
+        margin-top: 70px;
+    }
+    .flex-profil{
+        display: block;
+    }
+
+}

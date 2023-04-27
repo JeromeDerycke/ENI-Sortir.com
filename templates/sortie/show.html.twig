@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie{% endblock %}
+
+{% block body %}
+    <h1 class=" title-sortie align">Sortie</h1>
+            <div class="flex">
+                <div>
+
+                    <div class="margin-show">
+                        Nom :
+                        {{ sortie.nom }}
+                    </div>
+                    <div class="margin-show">
+                        Date et Heure de la sortie :
+                        {{ sortie.dateHeureDebut ? sortie.dateHeureDebut|date('Y-m-d') : '' }}
+                    </div>
+                    <div class="margin-show">
+                        Date limite d'inscription :
+                        {{ sortie.dateLimiteInscription ? sortie.dateLimiteInscription|date('Y-m-d') : '' }}
+                    </div>
+                    <div class="margin-show">
+                        Nombre de places :
+                        {{ sortie.nbInscriptionsMax }} places
+                    </div>
+                    <div class="margin-show">
+                        Durée :
+                       {{ sortie.duree }} minutes
+                    </div>
+                    <div class="margin-show">
+                        Description et infos :
+                        {{ sortie.infosSortie }}
+                    </div>
+                </div>
+                <div>
+                    <div class="margin-show">
+                        Campus :
+                        {{ sortie.campus }}
+                    </div>
+                    <div class="margin-show">
+                        Lieu : {{ sortie.lieu }}
+                    </div>
+                    <div class="margin-show">
+                        Rue : {{ sortie.lieu.rue }}
+                    </div>
+                    <div class="margin-show">
+                        Code Postal : {{ sortie.lieu.ville.codePostal }}
+                    </div>
+                    <div class="margin-show">
+                        Latitude :
+                        {{ sortie.lieu.latitude }}
+                    </div>
+                    <div class="margin-show">
+                        Longitude :
+                        {{ sortie.lieu.longitude}}
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div
+                        class="align-petit">Organisateur : {{ sortie.organisateur.prenom }} {{ sortie.organisateur.nom }}
+                </div>
+                <div class="align-liste">
+                    Liste des participants inscrits :
+                </div>
+                <div class="flex">
+                    {% for participant in sortie.participants %}
+                    <div class="flex-res">
+                        <div>
+                         {{ participant.prenom}} {{ participant.nom}}
+                        </div>
+                        <div>
+                            <a href="{{ path('app_participant_show', {'id': participant.id}) }}">Profil</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="align-retour">
+                    <a href="{{ path('app_sortie_index') }}">Retour</a>
+                </div>
+            </div>
+
+{% endblock %}

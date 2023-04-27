@@ -1,0 +1,27 @@
+<div class="oue">
+{{ form_start(form) }}
+    <div class="flex">
+        <div>
+            <img class="taille" src="{{ asset('uploads/photos/' ~participant.photoFileName) }}" alt="{{ participant.pseudo }}">
+        </div>
+        <div>
+            {{ form_row(form.pseudo) }}
+            {{ form_row(form.prenom) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.telephone) }}
+        </div>
+        <div>
+        {{ form_row(form.email) }}
+        {{ form_row(form.motdepasse) }}
+        {{ form_row(form.campus) }}
+        </div>
+
+
+    </div>
+
+
+    {{ form_end(form) }}
+</div>
+<div class="margin-top">
+    <button class="btn" type="button"><a href="{{ path('app_sortie_index') }}">Annuler</a></button>
+</div>

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail du participant{% endblock %}
+
+{% block body %}
+    <h1 class="align">{{ participant.pseudo }}</h1>
+    <div class="flex-profil">
+        <div>
+            <img class="taille" src="{{ asset('uploads/photos/' ~participant.photoFileName) }}" alt="{{ participant.pseudo }}">
+        </div>
+
+        <div>
+            <div class="flex-detail">
+                <div>Nom: {{ participant.nom }}</div>
+                <div> </div>
+            </div>
+            <div class="flex-detail">
+                <div>Prénom : {{participant.prenom }}</div>
+                <div></div>
+            </div>
+            <div class="flex-detail">
+                <div>Email : {{ participant.email }}</div>
+                <div></div>
+            </div>
+            <div class="flex-detail">
+                <div>Téléphone : {{ participant.telephone }}</div>
+                <div></div>
+            </div>
+            <div class="flex-detail">
+                <div>Campus : {{ participant.campus }}</div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="align-petit">
+        <a href="{{ path('app_participant_index') }}">Revenir à la liste</a>
+    </div>
+
+{% endblock %}

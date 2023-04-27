@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    <div class="flex">
+        <div>
+            {{ form_row(form.nom) }}
+            {{ form_row(form.dateHeureDebut) }}
+            {{ form_row(form.dateLimiteInscription) }}
+            {{ form_row(form.nbInscriptionsMax) }}
+            {{ form_row(form.duree) }}
+            {{ form_row(form.infosSortie) }}
+        </div>
+        <div>
+            {{ form_row(form.campus) }}
+            {{ form_row(form.lieu) }}
+        </div>
+    </div>
+    <div class="btn-cuns">
+        {# <button class="btn">{{ button_label|default('Enregistrer') }}</button>#}
+        <button class="btn">{{ button_label|default('Publier la sortie') }}</button>
+        <a href="{{ path('app_sortie_index') }}">Annuler</a>
+    </div>
+
+{{ form_end(form) }}

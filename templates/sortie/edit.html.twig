@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la Sortie{% endblock %}
+
+{% block body %}
+    <h1>Modifier la Sortie</h1>
+
+    {{ include('sortie/_form.html.twig') }}
+
+    <div class="btn-cuns">
+            <a href="{{ path('app_sortie_annule',{'id' : sortie.id}) }}"><button class="btn">Annuler la sortie</button></a>
+    </div>
+
+{% endblock %}

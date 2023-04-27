@@ -1,0 +1,138 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sortie index{% endblock %}
+
+{% block body %}
+    <div class="grid">
+        <aside>
+            <p>Date du jour : {{ 'now'|format_date('full',locale='fr') }}</p>
+
+            <p>Participant : {{ app.user.prenom}} {{ app.user.nom }}</p>
+
+        </aside>
+    </div>
+
+    <section id="filtre">
+
+
+        {{ form_start(form) }}
+        <div class="flex-main">
+            <div>
+                {{ form_row(form.campus) }}
+
+                Le nom de la sortie contient : {{ form_row(form.nom) }}
+
+                A partir de :{{ form_row(form.date1) }}
+
+                Jusqu'à : {{ form_row(form.date2) }}
+            </div>
+            <div>
+                Sorties dont je suis l'organisateur/trice{{ form_row(form.organisateur)}}
+
+                Sorties aux quelles je suis inscrit/e{{ form_row(form.inscrit) }}
+
+                Sorties aux quelles je ne suis pas inscrit/e{{ form_row(form.nonInscrit) }}
+
+                Sorties passées{{ form_row(form.sortiePassees) }}
+            </div>
+            <button type="submit" class="btn btn-success">Rechercher</button>
+        </div>
+
+
+        {{ form_end(form) }}
+
+    </section>
+
+    <div class="container">
+        <table class=" none table table-bordered table-striped">
+            <thead class="table-success">
+            <tr>
+                <th>Nom</th>
+                <th>Date de la sortie</th>
+                <th>Date de cloture</th>
+                <th>Inscrits / Places</th>
+                <th>InfosSortie</th>
+                <th>Etat</th>
+                <th>Organisateur</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sortie in sorties %}
+                {%set compteur = 0 %}
+                {% for participant in sortie.participants %}
+                    {% set compteur = +1 %}
+                {% endfor%}
+                <tr>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.dateHeureDebut ? sortie.dateHeureDebut|date('Y-m-d H:i')}} </td>
+                    <td>{{ sortie.dateLimiteInscription ? sortie.dateLimiteInscription|date('Y-m-d')}}</td>
+                    <td>{{ compteur }}/{{ sortie.nbInscriptionsMax }}</td>
+                    <td>{{ sortie.infosSortie }}</td>
+                    <td>{{ sortie.etat }}</td>
+                    <td>{{ sortie.organisateur }}</td>
+                    <td>
+                        <a href="{{ path('app_sortie_show',{'id' : sortie.id}) }}">afficher</a>
+                            {% if sortie.organisateur == app.user and sortie.etat.libelle != 'cloturée' and sortie.dateHeureDebut > date('')%}
+                                / <a href="{{ path('app_sortie_edit',{'id' : sortie.id}) }}">modifier</a>
+                                    {% else %}
+                                        {% if sortie.etat == 'ouverte' and sortie.dateLimiteInscription >= date() and app.user not in sortie.participants %}
+                                            / <a href="{{ path('app_sortie_inscription',{'id' : sortie.id}) }}">s'incrire</a>
+                                        {% endif %}
+
+                                        {% if sortie.dateHeureDebut >= date() and app.user in sortie.participants %}
+                                            / <a href="{{ path('app_sortie_desiste',{'id' : sortie.id}) }}">se désister</a>
+                                        {% endif %}
+                            {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <table class=" responsive table table-bordered table-striped">
+            <thead class="table-success">
+            <tr>
+                <th>Nom</th>
+                <th>InfosSortie</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for sortie in sorties %}
+                {%set compteur = 0 %}
+                {% for participant in sortie.participants %}
+                    {% set compteur = +1 %}
+                {% endfor%}
+                <tr>
+                    <td>{{ sortie.nom }}</td>
+                    <td>{{ sortie.infosSortie }}</td>
+                    <td>
+                        <a href="{{ path('app_sortie_show',{'id' : sortie.id}) }}">afficher</a>
+                        {% if sortie.organisateur == app.user and sortie.etat.libelle != 'cloturée' and sortie.dateHeureDebut > date('')%}
+                            / <a href="{{ path('app_sortie_edit',{'id' : sortie.id}) }}">modifier</a>
+                        {% else %}
+                            {% if sortie.etat == 'ouverte' and sortie.dateLimiteInscription >= date() and app.user not in sortie.participants %}
+                                / <a href="{{ path('app_sortie_inscription',{'id' : sortie.id}) }}">s'incrire</a>
+                            {% endif %}
+
+                            {% if sortie.dateHeureDebut >= date() and app.user in sortie.participants %}
+                                / <a href="{{ path('app_sortie_desiste',{'id' : sortie.id}) }}">se désister</a>
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <button type="button" class="btn-crea btn btn-outline-primary"><a href="{{ path('app_sortie_new') }}">Créer une sortie</a></button>
+    </div>
+
+{% endblock %}
